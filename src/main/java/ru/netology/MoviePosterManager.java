@@ -3,7 +3,7 @@ package ru.netology;
 public class MoviePosterManager {
 
     int resultLength = 5;
-    private MovieName[] posters = new MovieName[0];
+    public MovieName[] posters = new MovieName[0];
 
     // четыре конструктора
     public MoviePosterManager() {
@@ -28,9 +28,7 @@ public class MoviePosterManager {
     public void addNewMovie(MovieName nameOfMovie) {
 
         MovieName[] tempPosters = new MovieName[posters.length + 1];
-        for (int i = 0; i < posters.length; i++) {
-            tempPosters[i] = posters[i];
-        }
+        System.arraycopy(posters, 0, tempPosters, 0, posters.length);
         tempPosters[posters.length] = nameOfMovie;
         posters = tempPosters;
     }

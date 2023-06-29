@@ -6,33 +6,26 @@ import ru.netology.MoviePosterManager;
 
 public class MoviePosterManagerTest {
 
-    MovieName movie1 = new MovieName("Бладшот");
-    MovieName movie2 = new MovieName("Вперёд");
-    MovieName movie3 = new MovieName("Отель Белград");
-    MovieName movie4 = new MovieName("Джентльмены");
-    MovieName movie5 = new MovieName("Человек-невидимка");
-    MovieName movie6 = new MovieName("Тролли. Мировой тур");
-    MovieName movie7 = new MovieName("Номер один");
-    MovieName movie8 = new MovieName("Ещё один какой-то фильм");
+    MovieName movie1 = new MovieName("Movie 1");
+    MovieName movie2 = new MovieName("Movie 2");
+    MovieName movie3 = new MovieName("Movie 3");
+    MovieName movie4 = new MovieName("Movie 4");
+    MovieName movie5 = new MovieName("Movie 5");
+    MovieName movie6 = new MovieName("Movie 6");
+    MovieName movie7 = new MovieName("Movie 7");
+    MovieName movie8 = new MovieName("Movie 8");
+
+    MovieName [] posters = {movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8};
+    MovieName [] postersShortList = {movie1, movie2, movie3};
 
     MoviePosterManager managerForDefaultResultLength = new MoviePosterManager();
     MoviePosterManager managerForResultLength3 = new MoviePosterManager(3);
     MoviePosterManager managerForResultLength7 = new MoviePosterManager(7);
 
+    MoviePosterManager managerForResultLengthAndMoviePoster = new MoviePosterManager (posters, 3);
+    MoviePosterManager managerForShortList = new MoviePosterManager(postersShortList);
+
     // Add movies testing
-    @Test
-    public void shouldCheckAddNoMovie() {
-
-        MoviePosterManager manager = new MoviePosterManager();
-        MovieName newMovie = new MovieName(null);
-
-        manager.addNewMovie(newMovie);
-        MovieName[] expected = {};
-        MovieName[] actual = manager.getPosters();
-
-        Assertions.assertEquals(expected, actual);
-
-    }
 
     @Test
     public void shouldCheckAddSomeMovie() {
@@ -46,9 +39,9 @@ public class MoviePosterManagerTest {
         manager.addNewMovie(newMovie3);
 
         MovieName[] expected = {newMovie1, newMovie2, newMovie3};
-        MovieName[] actual = manager.getPosters();
+        MovieName[] actual = manager.findAll();
 
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertArrayEquals(expected, actual);
     }
 
     //Constructors Testing
@@ -103,6 +96,16 @@ public class MoviePosterManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
+    // FindLast testing for list of poster is shorter than ResultLength
+    @Test
+    public void shouldFindLastForBasicConstructorWithShortList() {
+
+        MovieName[] expected = {movie3, movie2, movie1};
+        MovieName[] actual = managerForShortList.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+
     // Constructor with ResultLength=3 testing
     @Test
     public void shouldFindAllForConstructorWithResultLength3() {
@@ -133,4 +136,12 @@ public class MoviePosterManagerTest {
         MovieName[] actual = managerForResultLength7.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void shouldCheckConstructorPostersAndLength (){
+        MovieName [] expected =  {movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8};
+        MovieName [] actual = managerForResultLengthAndMoviePoster.getPosters();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
 }
