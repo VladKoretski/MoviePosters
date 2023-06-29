@@ -123,14 +123,12 @@ public class MoviePosterManagerTest {
         MovieName[] actual = managerForResultLength7.findAll();
         Assertions.assertArrayEquals(expected, actual);
     }
-
     @Test
     public void shouldFindLastForConstructorWithResultLength7() {
         MovieName[] expected = {movie8, movie7, movie6, movie5, movie4, movie3, movie2};
         MovieName[] actual = managerForResultLength7.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
-
     @Test
     public void shouldCheckConstructorPostersAndLength() {
         MovieName[] expected = {movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8};
