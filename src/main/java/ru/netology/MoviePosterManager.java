@@ -2,10 +2,10 @@ package ru.netology;
 
 public class MoviePosterManager {
 
-    int resultLength = 5;
     public MovieName[] posters = new MovieName[0];
+    int resultLength = 5;
 
-    // четыре конструктора
+    // Constructors
     public MoviePosterManager() {
     }
 
@@ -24,7 +24,7 @@ public class MoviePosterManager {
         this.resultLength = resultLength;
     }
 
-    // добавление фильма
+    // File adding
     public void addNewMovie(MovieName nameOfMovie) {
 
         MovieName[] tempPosters = new MovieName[posters.length + 1];
@@ -33,6 +33,7 @@ public class MoviePosterManager {
         posters = tempPosters;
     }
 
+    //Manager's arts
     public MovieName[] getPosters() {
         return posters;
     }

@@ -5,7 +5,6 @@ import ru.netology.MovieName;
 import ru.netology.MoviePosterManager;
 
 public class MoviePosterManagerTest {
-
     MovieName movie1 = new MovieName("Movie 1");
     MovieName movie2 = new MovieName("Movie 2");
     MovieName movie3 = new MovieName("Movie 3");
@@ -15,15 +14,13 @@ public class MoviePosterManagerTest {
     MovieName movie7 = new MovieName("Movie 7");
     MovieName movie8 = new MovieName("Movie 8");
 
-    MovieName [] posters = {movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8};
-    MovieName [] postersShortList = {movie1, movie2, movie3};
-
+    MovieName[] posters = {movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8};
+    MoviePosterManager managerForResultLengthAndMoviePoster = new MoviePosterManager(posters, 3);
+    MovieName[] postersShortList = {movie1, movie2, movie3};
+    MoviePosterManager managerForShortList = new MoviePosterManager(postersShortList);
     MoviePosterManager managerForDefaultResultLength = new MoviePosterManager();
     MoviePosterManager managerForResultLength3 = new MoviePosterManager(3);
     MoviePosterManager managerForResultLength7 = new MoviePosterManager(7);
-
-    MoviePosterManager managerForResultLengthAndMoviePoster = new MoviePosterManager (posters, 3);
-    MoviePosterManager managerForShortList = new MoviePosterManager(postersShortList);
 
     // Add movies testing
 
@@ -90,7 +87,6 @@ public class MoviePosterManagerTest {
 
     @Test
     public void shouldFindLastForBasicConstructor() {
-
         MovieName[] expected = {movie8, movie7, movie6, movie5, movie4};
         MovieName[] actual = managerForDefaultResultLength.findLast();
         Assertions.assertArrayEquals(expected, actual);
@@ -99,12 +95,10 @@ public class MoviePosterManagerTest {
     // FindLast testing for list of poster is shorter than ResultLength
     @Test
     public void shouldFindLastForBasicConstructorWithShortList() {
-
         MovieName[] expected = {movie3, movie2, movie1};
         MovieName[] actual = managerForShortList.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
-
 
     // Constructor with ResultLength=3 testing
     @Test
@@ -138,10 +132,9 @@ public class MoviePosterManagerTest {
     }
 
     @Test
-    public void shouldCheckConstructorPostersAndLength (){
-        MovieName [] expected =  {movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8};
-        MovieName [] actual = managerForResultLengthAndMoviePoster.getPosters();
+    public void shouldCheckConstructorPostersAndLength() {
+        MovieName[] expected = {movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8};
+        MovieName[] actual = managerForResultLengthAndMoviePoster.getPosters();
         Assertions.assertArrayEquals(expected, actual);
     }
-
 }
